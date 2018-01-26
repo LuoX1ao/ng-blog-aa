@@ -1,0 +1,45 @@
+<link href='https://cdn.webfont.youziku.com/webfonts/nomal/97307/161/5a6600c7f629d90b84eaaeef.css' rel='stylesheet' type='text/css'
+/>
+<div class="layout" (click)="onLayoutClick($event.target)">
+  <ul class="top-bar">
+    <li class="menu-toggle-item" (click)="toggleMenu()" (mousedown)="menuToggleMouseDown()" (mouseup)="menuToggleMouseUp()">
+      <span class="menu-toggle-btn iconfont">&#xe84e;</span>
+    </li>
+    <li class="logo-item cssfc39c54f217c1b">
+      <a routerLink="/" class="logo-main">罗潇</a>
+    </li>
+    <li class="nav-item" *ngFor="let item of topMenus;">
+      <a routerLink="{{item.url}}">{{item.title}}</a>
+    </li>
+    <li class="search-item">
+      <input type="text" class="global-search" placeholder="Search..." (focus)="globalSearchToggle($event)" (blur)="globalSearchToggle($event)">
+    </li>
+  </ul>
+
+  <div class="flex-box">
+    <ul class="menu">
+      <li class="menu-item top-menu" *ngFor="let item of topMenus; index as i">
+        <a routerLink="{{item.url}}" (click)="onTopMenuItemClick(i)" [ngClass]="{active: item.selected}">{{item.title}}
+        </a>
+      </li>
+      <li class="menu-item" *ngFor="let item of menus; index as i">
+        <a #a routerLink="{{item.url}}" (click)="onItemClick(i, a)" *ngIf="!item.children || item.children.length == 0" [ngClass]="{active: item.selected}">{{item.title}}
+        </a>
+        <a #a (click)="onItemClick(i, a)" [ngClass]="{active: item.selected}" *ngIf="item.children && item.children.length > 0">{{item.title}}
+          <span class="iconfont arrow">&#xe612;</span>
+        </a>
+        <ul class="sub-menu" *ngIf="item.children && item.children.length > 0">
+          <li class="menu-item" *ngFor="let subItem of item.children; index as j">
+            <a routerLink="{{subItem.url}}" (click)="onSubItemClick(j, i)" [ngClass]="{active: subItem.selected}">{{subItem.title}}
+              <span class="iconfont arrow" *ngIf="subItem.children && subItem.children.length > 0">&#xe612;</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="shadow"></div>
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

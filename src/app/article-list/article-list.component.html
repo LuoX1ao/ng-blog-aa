@@ -1,0 +1,14 @@
+<ul class="article-list">
+  <li class="article-list-item2" *ngFor="let article of articles;">
+    <div class="tags">
+      <div class="tag" *ngFor="let tag of article.tags">{{tag}}</div>
+    </div>
+    <h3 class="article-title">
+      <a [routerLink]="article.url" [queryParams]="{'type': article.categroy, 'id': article.id}">{{article.title}}</a>
+    </h3>
+    <div class="desc">{{article.digest}}
+      <a [routerLink]="article.url" [queryParams]="{'type': article.categroy, 'id': article.id}" class="read-more">Read more...</a>
+    </div>
+    <div class="publication-time">{{article.time}}</div>
+  </li>
+</ul>
