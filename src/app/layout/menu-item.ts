@@ -1,3 +1,4 @@
+import {Article_Type} from '../article-list/model/article-info';
 export interface MenuItem {
     title: string;
     url?: string;
@@ -7,4 +8,5 @@ export interface MenuItem {
     icon?: string;
     home?: boolean;
     isTopMenu?: boolean;
+    category?: Article_Type;
 }

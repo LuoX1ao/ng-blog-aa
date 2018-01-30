@@ -1,15 +1,27 @@
 import { Injectable } from '@angular/core';
-import {ArticleInfo} from "./model/article-info";
+import { ArticleInfo} from './model/article-info';
 
 declare var require: any;
 
-var articles = require('./articles.config');
+const articles = require('./articles.config');
 
 @Injectable()
 export class ArticleListService {
 
-  getArticles(): ArticleInfo[] {
-    return articles.articles;
+  articles: Array<ArticleInfo>;
+
+  constructor() {
+    console.log('service Create');
+    this.articles = articles.articles;
+  }
+
+  getArticles(type?: string): ArticleInfo[] {
+    if (!type) {
+      return this.articles;
+    }
+    return this.articles.filter(item => {
+      return item.category === type;
+    });
   }
 
 }

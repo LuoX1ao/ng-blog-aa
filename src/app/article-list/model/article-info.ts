@@ -6,11 +6,22 @@ export interface ArticleInfo {
   time: string;
   tags?: string[];
   url: string;
-  categroy: Article_Type;
+  category: Article_Type;
 }
 
-export enum Article_Type {
-  ANGULAR,
-  REACT,
-  VUE
+export enum Article_Type  {
+  APACHE = 'apache',
+  JAVA = 'java',
+  PHP = 'php',
+  MYSQL = 'mysql',
+  ORACLE = 'oracle',
+  SQLSERVER = 'sqlserver',
+  ANGULAR = 'angular',
+  REACT = 'react',
+  JAVASCRIPT = 'javascript',
+  IOS = 'ios',
+  ANDROID = 'android',
+  OTHERS = 'others'
 }
+
+

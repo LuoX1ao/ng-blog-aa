@@ -1,4 +1,5 @@
-import { MenuItem } from './layout/menu-item';
+import { MenuItem } from './menu-item';
+import {Article_Type} from '../article-list/model/article-info';
 
 export const TOPMENUS: MenuItem[] = [{
   title: 'Item',
@@ -37,47 +38,59 @@ export const MENUS: MenuItem[] = [{
     url: '',
     children: [{
         title: 'Apache',
-        url: '/back-end/apache'
+        url: '/articles',
+        category: Article_Type.APACHE
     }, {
         title: 'Java',
-        url: '/back-end/java'
+        url: '/articles',
+        category: Article_Type.JAVA
     }, {
         title: 'PHP',
-        url: '/back-end/php'
+        url: '/articles',
+        category: Article_Type.PHP
     }]
 }, {
     title: 'Database',
     url: '',
     children: [{
         title: 'MYSQL',
-        url: '/database/mysql'
+        url: '/articles',
+        category: Article_Type.MYSQL
     }, {
         title: 'Oracle',
-        url: '/database/oracle'
+        url: '/articles',
+        category: Article_Type.ORACLE
     }, {
         title: 'SQLServer',
-        url: '/database/sqlserver'
+        url: '/articles',
+        category: Article_Type.SQLSERVER
     }]
 }, {
     title: 'H5',
     url: '',
     children: [{
         title: 'Angular',
-        url: '/h5/angular'
+        url: '/articles',
+        category: Article_Type.ANGULAR
     }, {
         title: 'Javascript',
-        url: '/h5/javascript'
+        url: '/articles',
+        category: Article_Type.JAVASCRIPT
     }, {
         title: 'React',
-        url: '/h5/react'
+        url: '/articles',
+        category: Article_Type.REACT
     }]
 }, {
     title: 'IOS',
-    url: '/ios'
+    url: '/articles',
+    category: Article_Type.IOS
 }, {
     title: 'Android',
-    url: '/android'
+    url: '/articles',
+    category: Article_Type.ANDROID
 }, {
     title: 'Other',
-    url: '/other'
+    url: '/articles',
+    category: Article_Type.OTHERS
 }];
