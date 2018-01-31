@@ -4,7 +4,7 @@ import {
   ViewContainerRef, SimpleChange, OnInit
 } from '@angular/core';
 import {ArticleDynamicData, DynamicTypeBuilder} from './article-type-builder';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params} from '@angular/router';
 
 declare var require: any;
 

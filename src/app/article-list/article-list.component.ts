@@ -9,7 +9,7 @@ import {ActivatedRoute, Params} from '@angular/router';
   styleUrls: ['./article-list.component.scss'],
   providers: [ArticleListService]
 })
-export class ArticleListComponent implements OnInit {
+export class ArticleListComponent {
 
   articles: ArticleInfo[];
 
@@ -21,11 +21,6 @@ export class ArticleListComponent implements OnInit {
         this.articles = articleService.getArticles();
       }
     });
-  }
-
-  ngOnInit() {
-
-
   }
 
 }
