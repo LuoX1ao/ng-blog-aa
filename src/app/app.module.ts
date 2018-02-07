@@ -1,3 +1,4 @@
+import { JitCompiler } from '@angular/compiler';
 import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
@@ -23,9 +24,9 @@ const routes: Routes = [
   }, {
     path: 'article', component: ArticleContainerComponent
   }, {
-    path: '', redirectTo: 'articles', pathMatch: 'full'
+    path: '', redirectTo: '/articles', pathMatch: 'full'
   }, {
-    path: '**', redirectTo: ''
+    path: '**', redirectTo: '/articles'
 }];
 
 @NgModule({

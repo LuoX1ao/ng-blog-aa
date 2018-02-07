@@ -18,7 +18,12 @@ pending 状态的 Promise 对象可能触发fulfilled 状态并传递一个值�
 <p>
 因为 Promise.prototype.then 和  Promise.prototype.catch 方法返回promise 对象， 所以它们可以被链式调用。
 </p>
+<img class="large-img" data-large-img="promises" src="https://mdn.mozillademos.org/files/8633/promises.png"
+ (click)="showLargeImg(promises)" />
+<div id="promises" #promises class="img-wrapper" style="display: none;">
+<span class="iconfont icon-close" (click)="closeLargeImg(promises)">&#xe61c;</span>
 <img src="https://mdn.mozillademos.org/files/8633/promises.png" />
+</div>
 <h3>
 创建Promise
 </h3>

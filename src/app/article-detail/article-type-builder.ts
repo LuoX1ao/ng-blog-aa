@@ -1,4 +1,6 @@
-import {Component, ComponentFactory, NgModule, Input, Injectable, Compiler} from '@angular/core';
+// import { JitCompiler } from '@angular/compiler';
+import { Component, ComponentFactory, NgModule, Input, Injectable, Compiler } from '@angular/core';
+
 import * as hljs from 'highlight.js';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 
@@ -14,7 +16,7 @@ export interface ArticleDynamicData {
 export class DynamicTypeBuilder {
 
   // wee need Dynamic component builder
-  constructor(protected compiler: Compiler) {}
+  constructor(private compiler: Compiler) {}
 
   public createComponentFactory(template: string): Promise<ComponentFactory<ArticleDynamicData>> {
     // unknown template ... let's create a Type for it
@@ -39,6 +41,14 @@ export class DynamicTypeBuilder {
     })
     class CustomDynamicComponent implements ArticleDynamicData {
       @Input() public source: string[];
+
+      showLargeImg(target) {
+        target.classList.add('display-block');
+      }
+
+      closeLargeImg(target) {
+        target.classList.remove('display-block');
+      }
     }
     // a component for this particular template
     return CustomDynamicComponent;
