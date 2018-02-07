@@ -115,6 +115,7 @@
     top: 100px;
     left: 0;
     box-shadow: 0 0 3px 3px gainsboro;
+    background-color: #fff;
   }
   .display-block {
     display: block !important;
