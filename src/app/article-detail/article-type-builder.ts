@@ -1,5 +1,6 @@
+import { OnInit } from '@angular/core';
 // import { JitCompiler } from '@angular/compiler';
-import { Component, ComponentFactory, NgModule, Input, Injectable, Compiler } from '@angular/core';
+import { Component, ComponentFactory, NgModule, Input, Injectable, Compiler, ViewChild, ElementRef } from '@angular/core';
 
 import * as hljs from 'highlight.js';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
@@ -39,8 +40,16 @@ export class DynamicTypeBuilder {
       styleUrls: ['article-detail.component.css'],
       template: tmpl,
     })
-    class CustomDynamicComponent implements ArticleDynamicData {
+    class CustomDynamicComponent implements ArticleDynamicData, OnInit {
       @Input() public source: string[];
+
+      @ViewChild('qn') qn: ElementRef;
+      @ViewChild('mb') mb: ElementRef;
+
+      sections: any;
+      qnItems: any;
+
+      activeIndex = 0;
 
       showLargeImg(target) {
         target.classList.add('display-block');
@@ -48,6 +57,25 @@ export class DynamicTypeBuilder {
 
       closeLargeImg(target) {
         target.classList.remove('display-block');
+      }
+
+      ngOnInit() {
+        this.sections = this.mb.nativeElement.querySelectorAll('h3');
+        this.qnItems = this.qn.nativeElement.querySelectorAll('.qn-item');
+      }
+
+      onScroll() {
+
+        for (let i = 0; i < this.sections.length; i++) {
+          if (this.sections[i].offsetTop - this.mb.nativeElement.parentElement.scrollTop <= 200) {
+            this.activeIndex = i;
+          }
+        }
+
+        for (let j = 0; j < this.qnItems.length;  j++) {
+          this.qnItems[j].classList.remove('active');
+        }
+        this.qnItems[this.activeIndex].classList.add('active');
       }
     }
     // a component for this particular template

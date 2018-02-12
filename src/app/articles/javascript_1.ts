@@ -1,5 +1,8 @@
 export const innerHtml = `
-<div class="markdown-body">
+<div class="article-container" (scroll)="onScroll()">
+
+<div class="markdown-body" #mb >
+
 <h2 class="article-title">Promise简介</h2>
 <h3>描述</h3>
 
@@ -37,6 +40,15 @@ Promise 对象是由关键字 new 及其构造函数来创建的。该构造函�
 <p>非常简单的例子</p>
 <pre><code mwlHighlightJs [source]="source[2]" language="javascript"></code></pre>
 </div>
+<ul class="quick-nav" #qn>
+  <li class="qn-item qn-topic active"><a href="#">动画</a></li>
+  <li class="qn-item"><a href="#">概述</a></li>
+  <li class="qn-item"><a href="#">状态与转场</a></li>
+  <li class="qn-item second-item"><a href="#">*（通配符）状态</a></li>
+  <li class="qn-item second-item"><a href="#">*（通配符）状态</a></li>
+</ul>
+</div>
+
 `;
 
 export const source: Array<string> = [`

@@ -10,7 +10,9 @@ declare var require: any;
 
 @Component({
     selector: 'app-article-container',
-    template: `<ng-template #articleDetail></ng-template>`
+    template: `
+    <ng-template #articleDetail></ng-template>
+    `
 })
 export class ArticleContainerComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
