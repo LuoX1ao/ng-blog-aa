@@ -1,18 +1,27 @@
 import { MenuItem } from './menu-item';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterContentChecked } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, AfterContentChecked {
 
   @Input('menus') menus: MenuItem[];
 
   @Input('topMenus') topMenus: MenuItem[];
 
+  @ViewChild('content') contentContainer: ElementRef;
+
   private mdMin = 992;
+
+  private sections: any;
+
+  private qnItems: any;
+
+  private activeIndex = 0;
 
   constructor() {
 
@@ -23,6 +32,11 @@ export class LayoutComponent implements OnInit {
     if (w >= this.mdMin) {
       this.toggleMenu();
     }
+  }
+
+  ngAfterContentChecked() {
+    this.sections = this.contentContainer.nativeElement.querySelectorAll('h3');
+    this.qnItems = this.contentContainer.nativeElement.querySelectorAll('.qn-item');
   }
 
   onLayoutClick(target: Element) {
@@ -62,6 +76,19 @@ export class LayoutComponent implements OnInit {
         break;
       }
     }
+  }
+
+  onScroll() {
+    for (let i = 0; i < this.sections.length; i++) {
+      if (this.sections[i].offsetTop - this.contentContainer.nativeElement.parentElement.scrollTop <= 200) {
+        this.activeIndex = i;
+      }
+    }
+
+    for (let j = 0; j < this.qnItems.length;  j++) {
+      this.qnItems[j].classList.remove('active');
+    }
+    this.qnItems[this.activeIndex].classList.add('active');
   }
 
   globalSearchToggle(event) {

@@ -16,14 +16,15 @@
     </li>
   </ul>
 
-  <div class="flex-box">
+  <div class="flex-box" (scroll)="onScroll()">
     <ul class="menu">
       <li class="menu-item top-menu" *ngFor="let item of topMenus; index as i">
         <a routerLink="{{item.url}}" (click)="onTopMenuItemClick(i)" [ngClass]="{active: item.selected}">{{item.title}}
         </a>
       </li>
       <li class="menu-item" *ngFor="let item of menus; index as i">
-        <a #a [routerLink]="[item.url, item.category]" param (click)="onItemClick(i, a)" *ngIf="!item.children || item.children.length == 0" [ngClass]="{active: item.selected}">{{item.title}}
+        <a #a [routerLink]="[item.url, item.category]" param (click)="onItemClick(i, a)" *ngIf="!item.children || item.children.length == 0"
+          [ngClass]="{active: item.selected}">{{item.title}}
         </a>
         <a #a (click)="onItemClick(i, a)" [ngClass]="{active: item.selected}" *ngIf="item.children && item.children.length > 0">{{item.title}}
           <span class="iconfont arrow">&#xe612;</span>
@@ -38,8 +39,9 @@
       </li>
     </ul>
     <div class="shadow"></div>
-    <div class="main-content">
+    <div class="main-content" #content>
       <ng-content></ng-content>
     </div>
+    <div class="footer"></div>
   </div>
 </div>

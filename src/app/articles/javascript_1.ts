@@ -1,5 +1,4 @@
 export const innerHtml = `
-<div class="article-container" (scroll)="onScroll()">
 
 <div class="markdown-body" #mb >
 
@@ -47,7 +46,6 @@ Promise 对象是由关键字 new 及其构造函数来创建的。该构造函�
   <li class="qn-item second-item"><a href="#">*（通配符）状态</a></li>
   <li class="qn-item second-item"><a href="#">*（通配符）状态</a></li>
 </ul>
-</div>
 
 `;
 
